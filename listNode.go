@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 type LinkNode struct {
-	value int
+	value any
 	next  *LinkNode
 }
 
@@ -15,7 +15,7 @@ func NewLinkedList() *LinkedList {
 	return &LinkedList{nil}
 }
 
-func (ll *LinkedList) InsertNode(value int) {
+func (ll *LinkedList) InsertNode(value any) {
 	var prev *LinkNode
 	current := ll.head
 
