@@ -5,28 +5,28 @@ import (
 	"strings"
 )
 
-type LinkNode[T any] struct {
+type Node[T any] struct {
 	value T
-	next  *LinkNode[T]
+	next  *Node[T]
 }
 
-type LinkedList[T any] struct {
-	head *LinkNode[T]
-	tail *LinkNode[T]
+type List[T any] struct {
+	head *Node[T]
+	tail *Node[T]
 	size int
 }
 
-func NewLinkedList[T any]() *LinkedList[T] {
-	return &LinkedList[T]{
+func NewList[T any]() *List[T] {
+	return &List[T]{
 		head: nil,
 		tail: nil,
 		size: 0,
 	}
 }
 
-func (ll *LinkedList[T]) InsertNode(value T) {
+func (ll *List[T]) PushBack(value T) {
 	if ll.head == nil {
-		ll.head = &LinkNode[T]{
+		ll.head = &Node[T]{
 			value: value,
 			next:  nil,
 		}
@@ -35,7 +35,7 @@ func (ll *LinkedList[T]) InsertNode(value T) {
 	}
 
 	if ll.tail != nil {
-		ll.tail.next = &LinkNode[T]{
+		ll.tail.next = &Node[T]{
 			value: value,
 			next:  nil,
 		}
@@ -109,7 +109,7 @@ func (ll *LinkedList[T]) InsertNode(value T) {
 // 	return false
 // }
 
-func (ll *LinkedList[T]) String() string {
+func (ll *List[T]) String() string {
 	var bulder strings.Builder
 	current := ll.head
 
