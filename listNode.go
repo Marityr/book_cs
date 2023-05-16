@@ -46,6 +46,15 @@ func (ll *List[T]) PushBack(value T) {
 	ll.size++
 }
 
+func (ll *List[T]) PopFront() {
+	if ll.head == nil {
+		return
+	} else if ll.head.next != nil {
+		ll.head = ll.head.next
+		ll.size--
+	}
+}
+
 // func (ll *LinkedList) RemoveNode(val int) {
 // 	var prev *LinkNode
 // 	current := ll.head
